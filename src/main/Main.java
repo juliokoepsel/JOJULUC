@@ -10,8 +10,11 @@ public class Main {
         try {
             Scanner scanner = new Scanner("INPUT");
             Parser parser = new Parser(scanner);
+            long startTime = System.nanoTime();
             parser.E();
+            long endTime = System.nanoTime();
             System.out.println("🏁 Compilation Successful! 🍾");
+            System.out.println("⏱️  Duration: " + (double)((endTime - startTime) / 1_000_000_000.0) + "s");
         } catch (LexicalException e) {
             System.out.println("⚠️ 🚨 Lexical Error: " + e.getMessage());
         } catch (SyntaxException e) {
