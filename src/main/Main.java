@@ -3,7 +3,7 @@ package main;
 import exceptions.LexicalException;
 import exceptions.SyntaxException;
 import lexical.Scanner;
-import parser.Parser;
+import syntax.Parser;
 
 public class Main {
     public static void main(String[] args) throws Exception {

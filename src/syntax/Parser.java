@@ -1,4 +1,4 @@
-package parser;
+package syntax;
 
 import exceptions.SyntaxException;
 import lexical.Scanner;
