@@ -12,32 +12,32 @@ public class Parser {
         this.scanner = scanner;
     }
 
-    public void E() {
-        T();
-        El();
+    public void Expressao() {
+        Termo();
+        ExpressaoRecursiva();
     }
 
-    public void El() {
+    private void ExpressaoRecursiva() {
         token = scanner.nextToken();
         printToken(token);
         if (token != null) {
-            OP();
-            T();
-            El();
+            Operador();
+            Termo();
+            ExpressaoRecursiva();
         }
     }
 
-    public void T() {
+    private void Termo() {
         token = scanner.nextToken();
         printToken(token);
         if (token.getType() != Token.TK.IDENTIFIER && token.getType() != Token.TK.NUMBER) {
-            throw new SyntaxException("Identifier or Number Expected, found " + token.getType() + " (" + token.getText() + ") at line " + token.getLine() + " and column " + token.getColumn());
+            throw new SyntaxException("IDENTIFIER or NUMBER Expected, found " + token.getType() + " (" + token.getText() + ") at line " + token.getLine() + " and column " + token.getColumn());
         }
     }
 
-    public void OP() {
+    private void Operador() {
 		if (token.getType() != Token.TK.OPERATOR) {
-			throw new SyntaxException("Operator Expected, found " + token.getType() + " (" + token.getText() + ")  at line " + token.getLine() + " and column " + token.getColumn());
+			throw new SyntaxException("OPERATOR Expected, found " + token.getType() + " (" + token.getText() + ")  at line " + token.getLine() + " and column " + token.getColumn());
 		}
 	}
 

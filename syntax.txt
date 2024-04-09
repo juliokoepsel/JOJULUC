@@ -1,19 +1,26 @@
 Dada a gramática G
 
-G = (Vn, Vt, P, S)
+G   = (Vn, Vt, P, S)
+(Vn = símbolos não terminais)
+(Vt = símbolos terminais)
+(P  = conjunto de regras de produção)
+(S  = símbolo inicial)
 
-Vn = E, T, OP
-Vt = id, num, + , - , * , /
+Vn  = E, T, OP
+(E  = expressão)
+(T  = termo)
+(OP = operador)
+Vt  = identificador, número, + , - , * , /
 
 1. E    -> E OP T | T
-2. T    -> id | num
+2. T    -> identificador | número
 3. OP   -> + | - | * | /
 
-precisamos reescrever a regra 1, transformando-a em:
+reescrita da regra 1:
 
 1a. E   -> T E'
 1b. E'  -> OP T E' | &
-2.  T   -> id | num
+2.  T   -> identificador | número
 3.  OP  -> + | - | * | /
 
 (& = vazio)
