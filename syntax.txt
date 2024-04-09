@@ -3,7 +3,7 @@ Dada a gramática G
 G   = (Vn, Vt, P, S)
 (Vn = símbolos não terminais)
 (Vt = símbolos terminais)
-(P  = conjunto de regras de produção)
+(P  = conjunto de regras)
 (S  = símbolo inicial)
 
 Vn  = E, T, OP
