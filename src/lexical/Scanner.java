@@ -54,7 +54,8 @@ public class Scanner {
                             token.setColumn(column - term.length());
                             return token;
                         } else {
-                            throw new LexicalException("Unrecognized Symbol");
+                            term += currentChar;
+                            throw new LexicalException("Unrecognized Symbol (" + term + ") at line " + line + " and column " + (column - term.length()));
                         }
                         break;
                     case 1:
@@ -71,7 +72,7 @@ public class Scanner {
                             token.setColumn(column - term.length());
                             return token;
                         } else {
-                            throw new LexicalException("Malformed Identifier");
+                            throw new LexicalException("Malformed Identifier (" + term + ") at line " + line + " and column " + column);
                         }
                         break;
                     case 2:
@@ -88,7 +89,7 @@ public class Scanner {
                             token.setColumn(column - term.length());
                             return token;
                         } else {
-                            throw new LexicalException("Malformed Number");
+                            throw new LexicalException("Malformed Number (" + term + ") at line " + line + " and column " + column);
                         }
                         break;
                 }

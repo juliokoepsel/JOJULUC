@@ -18,10 +18,13 @@ public class Main {
             System.out.println("⏱️  Duration: " + (double)((endTime - startTime) / 1_000_000_000.0) + "s");
         } catch (LexicalException e) {
             System.out.println("⚠️ 🚨 Lexical Error: " + e.getMessage());
+            e.printStackTrace();
         } catch (SyntaxException e) {
             System.out.println("⚠️ 🚨 Syntax Error: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
             System.out.println("⚠️ 🚨 Generic Error: " + e.getClass().getName());
+            e.printStackTrace();
         }
     }
 }

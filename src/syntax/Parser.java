@@ -37,7 +37,7 @@ public class Parser {
 
     private void Operador() {
 		if (token.getType() != Token.TK.OPERATOR) {
-			throw new SyntaxException("OPERATOR Expected, found " + token.getType() + " (" + token.getText() + ")  at line " + token.getLine() + " and column " + token.getColumn());
+			throw new SyntaxException("OPERATOR Expected, found " + token.getType() + " (" + token.getText() + ") at line " + token.getLine() + " and column " + token.getColumn());
 		}
 	}
 
