@@ -75,7 +75,6 @@ public class Scanner {
                         }
                         break;
                     case 2:
-                        // TODO: Allow only one '.'
                         if (isDigit(currentChar) || currentChar == '.') {
                             term += currentChar;
                             state = 2;
