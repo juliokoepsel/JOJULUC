@@ -4,9 +4,7 @@ public class Token {
     public enum TK {
         IDENTIFIER,
         NUMBER,
-        OPERATOR,
-        PUNCTUATION,
-        ASSIGN
+        OPERATOR
     }
 
     private TK type;
