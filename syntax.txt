@@ -12,9 +12,10 @@ Vn  = E, T, OP
 (OP = operador)
 Vt  = identificador, número, + , - , * , /
 
-1. E    -> E OP T | T
-2. T    -> identificador | número
-3. OP   -> + | - | * | /
+P = 
+    1. E    -> E OP T | T
+    2. T    -> identificador | número
+    3. OP   -> + | - | * | /
 
 reescrita da regra 1:
 
