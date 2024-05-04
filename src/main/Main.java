@@ -14,7 +14,7 @@ public class Main {
             long startTime = System.nanoTime();
             parser.Expressao();
             long endTime = System.nanoTime();
-            System.out.println("🏁 Compilation Successful! 🍾");
+            System.out.println("\n🏁 Compilation Successful! 🍾");
             System.out.println("⏱️  Duration: " + (double)((endTime - startTime) / 1_000_000_000.0) + "s");
         } catch (LexicalException e) {
             System.out.println("⚠️ 🚨 Lexical Error: " + e.getMessage());

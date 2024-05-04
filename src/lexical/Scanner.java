@@ -43,15 +43,15 @@ public class Scanner {
                         } else if (isDigit(currentChar)) {
                             term += currentChar;
                             state = 2;
-                        } else if (isSpace(currentChar)) {
+                        } else if (isSpaceOrNewLine(currentChar)) {
                             state = 0;
                         } else if (isOperator(currentChar)) {
                             term += currentChar;
-					        token = new Token();
-                            token.setType(Token.TK.OPERATOR);
-                            token.setText(term);
-                            token.setLine(line);
-                            token.setColumn(column - term.length());
+					        token = new Token(Token.TK.OPERATOR, term, line, (column - term.length()), 0);
+                            return token;
+                        } else if (isScope(currentChar)) {
+                            term += currentChar;
+                            token = new Token(Token.TK.SCOPE, term, line, (column - term.length()), 0);
                             return token;
                         } else {
                             term += currentChar;
@@ -60,16 +60,12 @@ public class Scanner {
                         break;
                     case 1:
                         if (isChar(currentChar) || isDigit(currentChar)) {
-                            term += currentChar;
-                            state = 1;
-                        } else if (isSpace(currentChar) || isOperator(currentChar) || isEOF(currentChar)) {
+                                term += currentChar;
+                                state = 1;
+                        } else if (isSpace(currentChar) || isOperator(currentChar) || isEOF(currentChar) || isScope(currentChar)) {
                             if (!isEOF(currentChar))
                                 back();
-                            token = new Token();
-                            token.setType(Token.TK.IDENTIFIER);
-                            token.setText(term);
-                            token.setLine(line);
-                            token.setColumn(column - term.length());
+                            token = new Token(Token.TK.IDENTIFIER, term, line, (column - term.length()), 0);
                             return token;
                         } else {
                             throw new LexicalException("Malformed Identifier (" + term + ") at line " + line + " and column " + (column - term.length()));
@@ -80,13 +76,10 @@ public class Scanner {
                             term += currentChar;
                             state = 2;
                         } else if (!isChar(currentChar) || isEOF(currentChar)) {
-                            if (!isEOF(currentChar))
+                            if (!isEOF(currentChar)) {
                                 back();
-                            token = new Token();
-                            token.setType(Token.TK.NUMBER);
-                            token.setText(term);
-                            token.setLine(line);
-                            token.setColumn(column - term.length());
+                            }
+                            token = new Token(Token.TK.NUMBER, term, line, (column - term.length()), 0);
                             return token;
                         } else {
                             throw new LexicalException("Malformed Number (" + term + ") at line " + line + " and column " + (column - term.length()));
@@ -109,11 +102,19 @@ public class Scanner {
         return c == '>' || c == '<' || c == '=' || c == '!' || c == '+' || c == '-' || c == '*' || c == '/';
     }
 
-    private boolean isSpace(char c) {
+    private boolean isScope(char c) {
+        return c == '{' || c == '}';
+    }
+
+    private boolean isSpaceOrNewLine(char c) {
         if (c == '\n' || c == '\r') {
             line++;
             column = 1;
         }
+        return c == ' ' || c == '\t' || c == '\n' || c == '\r';
+    }
+
+    private boolean isSpace(char c) {
         return c == ' ' || c == '\t' || c == '\n' || c == '\r';
     }
 
