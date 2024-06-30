@@ -1,0 +1,95 @@
+program : functions main_function
+
+functions : function functions
+          | /* empty */
+
+function : FUNCTION TYPE ID '(' parameters ')' block
+
+parameters : parameter ',' parameters
+           | parameter
+           | /* empty */
+
+parameter : TYPE ID
+
+main_function : MAIN '(' parameters ')' block
+
+block : '{' statements '}'
+
+statements : statement statements
+           | /* empty */
+
+statement : declaration_statement
+          | assignment_statement
+          | if_statement
+          | loop_statement
+          | break_statement
+          | return_statement
+          | print_statement
+
+declaration_statement : TYPE ID '=' expression ';'
+
+assignment_statement : ID '=' expression ';'
+
+if_statement : IF '(' expression ')' block else_statement
+
+else_statement : ELSE block
+               | ELSE if_statement
+               | /* empty */
+
+loop_statement : LOOP block
+
+break_statement : BREAK ';'
+
+return_statement : RETURN expression ';'
+
+print_statement : PRINT '(' expression ')' ';'
+
+expression : expression '+' expression
+           | expression '-' expression
+           | expression '*' expression
+           | expression '/' expression
+           | expression '%' expression
+           | expression '>' expression
+           | expression '<' expression
+           | expression '==' expression
+           | expression '!=' expression
+           | expression '<=' expression
+           | expression '>=' expression
+           | expression '&&' expression
+           | expression '||' expression
+           | '!' expression
+           | '(' expression ')'
+           | ID '(' arguments ')'
+           | ID
+           | INT
+           | FLOAT
+           | STRING
+           | BOOL
+
+arguments : argument ',' arguments
+          | argument_list
+          | /* empty */
+
+argument : ID '(' arguments ')'
+         | ID
+         | INT
+         | FLOAT
+         | STRING
+         | BOOL
+
+TYPE : 'void' | 'int' | 'float' | 'string' | 'bool'
+FUNCTION : 'function'
+MAIN : 'main'
+IF : 'if'
+ELSE : 'else'
+LOOP : 'loop'
+BREAK : 'break'
+RETURN : 'return'
+PRINT : 'print'
+
+ID : [a-zA-Z_][a-zA-Z0-9_]*
+INT : [-+]?[0-9]+
+FLOAT : [-+]?[0-9]+ '.' [0-9]+
+STRING : '"' [^"]* '"' | '\'' [^']* '\''
+BOOL : 'true' | 'false'
+

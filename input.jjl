@@ -1,0 +1,108 @@
+function int addition_function_example(int num1, int num2) {
+    int result = num1 + num2;
+    return result;
+}
+function int recursive_factorial_function_example(int num) {
+    if (num == 0) {
+        return 1;
+    }
+    int result = num - 1;
+    return num * recursive_factorial_function_example(result);
+}
+main() {
+    print("START");
+    print("");
+
+    int result_int = 0;
+    float result_float = 0.0;
+
+    // Exemplo de multiplicação:
+    print("Multiplication example:");
+    result_float = 7 * 8;
+    print(result_float);
+    print("");
+
+    // Exemplo de divisão:
+    print("Division example:");
+    result_float = 5.0 / 2;
+    print(result_float);
+    print("");
+    
+    // Exemplo de adição:
+    print("Addition example:");
+    result_int = addition_function_example(1, 2);
+    print(result_int);
+    print("");
+    
+    // Exemplo de subtração:
+    print("Subtraction example:");
+    result_int = 20 - 10 - 13;
+    print(result_int);
+    print("");
+    
+    // Exemplo misto:
+    print("Mixed example:");
+    result_float = 3 + 4 * (5 + 5) + -20 / 2; // Resultado = 33
+    print(result_float);
+    print("");
+    
+    // Exemplo de if e loop:
+    print("If and Loop example:");
+    int i = 0;
+    loop { // loop infinito
+        if (i < 10) {
+            print(i);
+            if (i > 0) {
+                print("i = positivo");
+            }
+            if (i <= 2) {
+                print("i = 2 ou menos");
+            } else if (i >= 6) {
+                print("i = 6 ou mais");
+            } else if (i == 4) {
+                print("i = 4");
+            } else {
+                print("i != 4 e entre 2 e 6");
+            }
+            i = i + 1;
+        } else {
+            break; // Quebra o loop
+        }
+    }
+    if ((4 % 2) == 0) {
+        print("4 = par");
+        print("");
+    }
+    
+    // Exemplo de boolean e string:
+    print("Boolean and String example:");
+    string string_test = "TRUE";
+    bool bool_test = true;
+    if (bool_test) {
+        print(string_test);
+        bool_test = false;
+    }
+    if (!bool_test) {
+        print(string_test);
+    }
+    
+    string char_test = 'T';
+    bool true_bool1 = true;
+    bool true_bool2 = true;
+    bool false_bool = false;
+    if (true_bool1 && true_bool2) {
+        print(char_test);
+    }
+    if (false_bool || true_bool2) {
+        print(char_test);
+    }
+    
+    print("");
+    // Exemplo de função recursiva:
+    print("Factorial example:");
+    print(recursive_factorial_function_example(4)); // 4! é 24
+    print("");
+    
+    print("THE END");
+}
+
